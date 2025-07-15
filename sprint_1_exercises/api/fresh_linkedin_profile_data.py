@@ -32,7 +32,7 @@ def get_profile_posts(url:str):
     log.info(f'API request uri: {uri}')
 
     headers = {
-        "x-rapidapi-host" : "fresh-linkedin-profile-data.p.rapidapi.com",
+        "x-rapidapi-host" : os.getenv("RAPIDAPI_HOST"),
         "x-rapidapi-key": os.getenv("RAPIDAPI_KEY")
     }
 
@@ -54,6 +54,32 @@ def get_profile_posts(url:str):
         log.error(f"An error occurred: {ex}")
         return
 
+def get_company_by_url(url_company:str):
+    
+    resource = "get-company-by-linkedinurl"
+    params = {
+        "linkedin_url": url_company
+    }
 
+    headers = {
+        "x-rapidapi-key" : os.getenv("RAPIDAPI_KEY"),
+        "x-rapidapi-host": os.getenv("RAPIDAPI_HOST")
+    }
 
-get_profile_posts(os.getenv("LINKEDIN_PROFILE_URL"))
+    uri = os.getenv("URI_API_FRESH_LINKEDIN_PROFILE_DATA") + resource
+
+    log.info(f"Uri to get company by url: {uri}")
+    
+    try:
+        response = requests.get(url = uri, headers = headers, params = params, timeout = 10)
+        response.raise_for_status()
+        log.info("Company data was found")
+
+    except requests.exceptions.RequestException as ex:
+        log.error(f"Request failed: {ex}")
+        return
+
+    log.info(f"Company data keys: {response.json()['data'].keys()}")
+
+#get_profile_posts(os.getenv("LINKEDIN_PROFILE_URL"))
+get_company_by_url(os.getenv("COMPANY_LINKEDIN_URL"))

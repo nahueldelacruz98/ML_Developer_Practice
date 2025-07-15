@@ -31,11 +31,3 @@ https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-web-search
 4. Handle JSON responses
     - keys() --> to get all keys you can access.
     - pandas library --> to work with large and structured data (columns, rows, and so on)
-
-# TODO
-1. Next function to do: 'get-company-by-url' (GET) and 'search-jobs' (POST)
-2. Next API -> Real Time Web Search
-    - Search (advanced) (GET)
-    - Batch Search (light) (POST)
-    - IMPORTANT: use the same best practices as the first script.
-    
