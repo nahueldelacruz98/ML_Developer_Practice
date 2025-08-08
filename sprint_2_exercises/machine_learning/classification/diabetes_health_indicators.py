@@ -79,7 +79,7 @@ def preprocess_data(X_train: pd.DataFrame, X_test: pd.DataFrame):
     Categorical: [Age, GenHlth,]
     Cardinal: []
     '''
-    oh_enc = OneHotEncoder()
+    oh_enc = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
     ord_enc = OrdinalEncoder()
     min_max_scaler = MinMaxScaler()
 
@@ -92,7 +92,8 @@ def preprocess_data(X_train: pd.DataFrame, X_test: pd.DataFrame):
     X_test[ord_columns] = ord_enc.transform(X_test[ord_columns])
 
     #Categorical columns
-    ohenc_train = oh_enc.fit_transform(X_train[oh_columns])
+    oh_enc.fit(X_train[oh_columns])
+    ohenc_train = oh_enc.transform(X_train[oh_columns])
     ohenc_test = oh_enc.transform(X_test[oh_columns])
 
     df_train_ohe = pd.DataFrame(
@@ -148,13 +149,13 @@ def train_model(X_train:pd.DataFrame, Y_train:pd.DataFrame):
 def show_prediction_metrics(Y_predictions, Y_test):
     '''
     Compare both results (predictions) and the actual results.
-    Use different metrics: R2 score, roc_auc_score
+    Use different metrics: roc_auc_score. 
+    NOT USE R2 score since R2 only works with regression problems. And this one is a classification problem.
     '''
-    r2_results = r2_score(y_pred=Y_predictions, y_true=Y_test)
     roc_auc_metric = roc_auc_score(y_true=Y_test, y_score=Y_predictions)
+    
 
     print(f'Roc AUC score: {roc_auc_metric}')
-    print(f'R2 score: {r2_results}')
 
 
 x_data, y_data = fetch_data()
@@ -166,7 +167,8 @@ X_train, X_test = preprocess_data(X_train=X_train, X_test=X_test)
 
 model = train_model(X_train, Y_train)
 
-predictions = model.predict(X_test)
+#predictions = model.predict(X_test)
+predictions = model.predict_proba(X=X_test)[:,1]
 print('Predictions done. Check metrics')
 
-show_prediction_metrics(predictions)
+show_prediction_metrics(predictions, Y_test)
