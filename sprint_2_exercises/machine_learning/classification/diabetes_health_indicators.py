@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from sklearn.model_selection import train_test_split, RandomizedSearchCV, KFold
+from sklearn.model_selection import train_test_split, RandomizedSearchCV, KFold, cross_validate
 from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score, r2_score
@@ -133,16 +133,62 @@ def preprocess_data(X_train: pd.DataFrame, X_test: pd.DataFrame):
     return X_train, X_test
 
 def train_model(X_train:pd.DataFrame, Y_train:pd.DataFrame):
-    '''
     
-    '''
+    #rf_model = RandomForestClassifier(n_estimators=200,criterion='entropy',max_depth=200, min_samples_leaf=2, max_features='sqrt',
+    #                                  n_jobs=-1,random_state=42, class_weight='balanced')
     
-    rf_model = RandomForestClassifier(n_estimators=200,criterion='entropy',max_depth=200, min_samples_leaf=2, max_features='sqrt',
-                                      n_jobs=-1,random_state=42, class_weight='balanced')
-    
+    #{'n_estimators': 400, 'min_samples_leaf': 100, 'max_leaf_nodes': 10000, 'max_features': 'log2', 'max_depth': 30}   #Best with RandomizedCV
+
+    rf_model = RandomForestClassifier(n_estimators=400, max_depth=100, min_samples_leaf=100, max_leaf_nodes=10000, max_features = 'sqrt',
+                                      n_jobs=-1,random_state=42)
+
     print("start training")
     rf_model.fit(X_train, Y_train)
     print("ends training")
+    return rf_model
+
+def train_model_randomized_classifier(X_train:pd.DataFrame, Y_train:pd.DataFrame):
+    
+    '''
+    1st. Find right cross validation (KFold - StratifiedKFold)
+    2nd. select the hyperparameters to test (params)
+    3hd. train the RandomizedSearchCV model using params and Cross validation.
+    '''
+
+    # Cross Validation with Kfold
+    kf = KFold(n_splits=4, shuffle=True)
+    rf_basemodel = RandomForestClassifier(n_jobs=-1,random_state=42)
+    # Test your Kfolds using cross_validate function
+    cv_train_results = cross_validate(estimator=rf_basemodel,  X=X_train, y=Y_train, cv=kf, return_train_score=True, return_estimator=True,n_jobs=-1)
+    
+    print(f"Cross validations result for training data: {cv_train_results}")
+
+    #Select hyperparameters (see more about RandomForestClassifier hyperparameters here: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+
+    params = {
+        'n_estimators':[50,100,200,400],
+        'max_depth':[None, 30, 50, 100],
+        'max_features':['log2','sqrt'],
+        'min_samples_leaf':[100,500,1000,5000,None],  #Seems like this hp improves for regression tasks
+        'max_leaf_nodes':[1000,5000,10000,None],
+    }
+
+    #train randomized search CV model
+
+    rf_model = RandomizedSearchCV(
+        estimator=rf_basemodel,
+        param_distributions=params,
+        n_jobs=-1,
+        return_train_score=True,
+        n_iter=20
+    )
+
+    print("start training RANDOMIZED SEARCH CV model...")
+    rf_model.fit(X_train, Y_train)
+    print("ends training")
+    print(rf_model.best_params_)
+    print(rf_model.best_score_)
+
     return rf_model
 
 
@@ -153,7 +199,6 @@ def show_prediction_metrics(Y_predictions, Y_test):
     NOT USE R2 score since R2 only works with regression problems. And this one is a classification problem.
     '''
     roc_auc_metric = roc_auc_score(y_true=Y_test, y_score=Y_predictions)
-    
 
     print(f'Roc AUC score: {roc_auc_metric}')
 
@@ -165,10 +210,13 @@ X_train, Y_train, X_test, Y_test = split_data(x_data=x_data, y_data=y_data)
 
 X_train, X_test = preprocess_data(X_train=X_train, X_test=X_test)
 
-model = train_model(X_train, Y_train)
+model = train_model(X_train, Y_train) #0.786 score 
+#model = train_model_randomized_classifier(X_train=X_train, Y_train=Y_train)
 
 #predictions = model.predict(X_test)
+predictions_train = model.predict_proba(X=X_train)[:,1]
 predictions = model.predict_proba(X=X_test)[:,1]
 print('Predictions done. Check metrics')
 
+show_prediction_metrics(predictions_train, Y_train)
 show_prediction_metrics(predictions, Y_test)
