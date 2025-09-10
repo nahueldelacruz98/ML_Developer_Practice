@@ -8,17 +8,6 @@ ML Cheatsheet:
 3. https://elitedatascience.com/machine-learning-algorithms
 4. https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
 
-# TO DO
-1. Read and recap ML basics
-    - Start with Linear Regression and Logistic Regression      # Linear Regression DONE
-    - Study Classification metrics (Confusion Matrix, F1 score, ROC, AUC)
-    - Study Regression metrics (basic metrics, Coefficient of determination, AIC, BIC)
-2. Keep reading ML Cheatsheet to continue learning and put everything in Practice
-REMEMBER: DO NOT START WITH PRACTICE YET (until finishing step 1 at least)
-REMEMBER: Not everything is about theory, but helps a lot. Try not to avoid practice. PRACTICE ALL THE TIME
-
-
-
 # LINEAR REGRESSION
 
 1. Quantifies the relationship between the data --> R^2
@@ -38,15 +27,24 @@ Topics
                 - If it is 0%. Data is not compatible.
 
     - Adding variables will never reduce R^2
-# TO DO
-    - Look for your first Linear Regression Model and do it from scratch
-        - Look for a webpage that has lots of datasets
-        - Study the data and find
-            - The hipotesis (Y) and the corresponding features (X) to train your model
-            - Train a basic Logistic or Linear Regression using Scikit Learn.
-                - TODO: preprocessing (datetime, binary, continuous and classes to the same scale)
-                - HINT: you can use StandardScaler from sklearn
-                - GOAL: Reach out to R2Score > 0.85
-        - Do it for at least 2 datasets.
-    - Next to study: Classification problem
-    - See link: https://mlu-explain.github.io/
+
+# Regression problem: Bike Sharing
+Link of dataset: https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset
+
+Problem: predict the amount of bikes rented based on the datetime and weather conditions
+Amount of instances: ~17K
+
+R2 Score: 0.683
+Models: XGBoost ; LinearRegression ; SGDRegressor
+
+# Classification problem: CDC Diabetes Health Indicators
+Link of dataset: https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators
+
+Problem: predict whether a patient has diabetes, is pre-diabetic, or healthy
+Amount of instances: ~253K
+
+ROC AUC SCORE: 0.82
+
+# TUNADROMD: detect malware 
+Link of dataset: https://archive.ics.uci.edu/dataset/813/tunadromd
+Target: Label

@@ -1,0 +1,5 @@
+__pycache__
+.dockerignore
+.gitignore
+Dockerfile
+data/predictions.db
