@@ -9,7 +9,7 @@ def get_database():
     return df_base
 
 #GET schools
-@router.get("/schools")
+@router.get("/school/get_schools")
 def get_schools():
     df = get_database()
 
@@ -20,13 +20,13 @@ def get_schools():
         "count":len(list_schools)
     }
 
-@router.get("/students_per_school")
+@router.get("/school/students_per_school")
 def get_students_per_school(school_name:str):
     df = get_database()
 
     #check if school belongs to the list
     if(school_name not in get_schools()["schools"]):
-        raise HTTPException(status_code='400', detail=f'The school {school_name} does not exist in our database.')
+        raise HTTPException(status_code=400, detail=f'The school {school_name} does not exist in our database.')
     
     #filter by school and return all students. Filter required columns
     list_columns = ['school','sex','age','address','famsize','Pstatus','Medu','Fedu']
@@ -39,7 +39,7 @@ def get_students_per_school(school_name:str):
         "count": len(df_school_students)
     }
 
-@router.get("/students_best_performance")
+@router.get("/school/students_best_performance")
 def get_students_best_performance(top:int, min_score:int, school_name:str):
     df = get_database()
     
