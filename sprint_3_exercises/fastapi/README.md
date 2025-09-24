@@ -21,11 +21,29 @@ https://archive.ics.uci.edu/dataset/858/rocket+league+skillshots
 NEW FEATURES:
 - Docker
 - SQLite
+- Testing
 
 API will have the following functions and structure:
 
 main
-    - 
+    - GET median_ball_acceleration_by_distance DONE
+        - DistanceWall
+        - DistanceBall
+        - PlayerSpeed
+    - GET get_average_player_speed  DONE
+        - PlayerSpeed
+    - GET median_distance_wall
+        - Min BallAcceleration
+        - Min PlayerSpeed
+    - POST new_move
+        - BallSpeed
+        - PlayerSpeed
+        - DistanceBall
+        - DistanceWall
+        - BallAcceleration
+
+---------------------------------------*-------------------------------------------------------------------*------------------------------------------------------*
+
 
 FAST API basics
 
