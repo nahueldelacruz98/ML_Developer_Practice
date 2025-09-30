@@ -1,0 +1,96 @@
+Universidad Nacional de La Matanza
+Departamento de Ingeniería e Investigaciones
+Tecnológicas
+Cronograma del curso
+Inteligencia Artificial (3664)
+Profesores:
+Dr. Ierache, Jorge
+Dr. Becerra Martín
+Ing. Sanz Diego
+Cronograma Curso Inteligencia Artificial (3664)
+El calendario de clases y actividades es tentativo sujeto a cambios
+Clase Fecha Lectura y Videos Actividades Complementarias Modalidad Docente
+1. Introducción a la Materia, Cronograma y Estructura MIeL.
+2. Ingeniería de Conocimiento Metodología IDEAL y Conceptualización. 1. Actividad Trazabilidad de Martin
+1 20/08/2025 (Video 1). conceptualización en tesis. Virtual por teams (Sincrónico) Becerra y
+3. Arquitectura de Sistemas Expertos (Video 2). 2. Guía de ejercicios INCO. Jorge Ierache
+4. Explicación actividades complementarias.
+1. Tratamiento de Incertidumbre en sistemas expertos (Video 5).
+1. Guía de ejercicios INCO. Tutor: Martin
+2 27/08/2025 2. Técnicas de educción (Video 6). MIeL (Asincrónico)
+2. Resolver dudas de guía de ejercicios. Becerra
+3. Viabilidad de Sistemas Expertos (Videos 7).
+1. Revisión de Metodología IDEAL y caso de estudio. Martin
+1. Guía de ejercicios INCO.
+3 3/09/2025 2. Drools: Herramienta Sistema expertos (Video 4). Virtual por teams (Sincrónico) Becerra y
+2. Resolver dudas de guía de ejercicios.
+3. Representaciones de conocimiento (Video 3). Jorge Ierache
+1. Guía de ejercicios INCO. Tutor: Martin
+4 10/09/2025 1. Semana de estudio. MIeL (Asincrónico)
+2. Resolver dudas de guía de ejercicios. Becerra
+Martin
+5 17/09/2025 1. Agentes. (Video 10 y 11). 1. Guía de ejercicios de agentes. Virtual por teams (Sincrónico) Becerra y
+Jorge Ierache
+Consultas sobre Ingeniería de Conocimiento Metodología IDEAL y
+Conceptualización, Representaciones de Conocimiento, Arquitectura Martin
+6 24/09/2025 Virtual por teams (Sincrónico)
+Sistemas Expertos, Tratamiento de Incertidumbre, Técnicas de Educción, Becerra
+Viabilidad de Sistemas Expertos y Agentes.
+Martin
+7 1/10/2025 Primer parcial. Presencial Becerra y
+Diego Sanz
+1. Enunciado ML - Ejercicio Práctico
+8 8/10/2025 1. Aprendizaje de Máquina - Conceptos Esenciales. (Videos 1.x). Virtual por teams (Sincrónico) Diego Sanz
+Regresión/Clasificación
+Avance Vídeos Redes Neuronales,
+Tutores:
+9 15/10/2025 1. Aprendizaje de Máquina - Conceptos Avanzados. (Videos 2.x). Búsqueda, Optimización y Algoritmos MIeL (Asincrónico)
+Diego Sanz
+Genéticos.
+1. Entrega ML - Ejercicio Práctico
+1. Redes Neuronales (Videos 3.x).
+Regresión/Clasificación
+10 22/10/2025 2. Búsqueda y Optimización (Videos 4.x). Virtual por teams (Sincrónico) Diego Sanz
+2. Enunciado ML - Ejercicio Práctico
+3. Algoritmos genéticos (Videos 5.x).
+MLP/CNN
+Repaso Vídeos ML Conceptos
+Esenciales, Redes Neuronales, Tutores:
+11 29/10/2025 1. Semana de estudio. MIeL (Asincrónico)
+Búsqueda, Optimización y Algoritmos Diego Sanz
+Genéticos.
+3664 Inteligencia Artificial Universidad Nacional de La Matanza
+1. Ejercicios Prácticos sobre Temas Vistos.
+1. Entrega ML - Ejercicio Práctico
+12 5/11/2025 2. Consultas ML Conceptos Esenciales, Redes Neuronales, Búsqueda y Virtual por teams (Sincrónico) Diego Sanz
+MLP/CNN
+Optimización y Algoritmos Genéticos.
+Martin
+13 12/11/2025 Segundo parcial. Presencial Becerra y
+Diego Sanz
+Martin
+14 19/11/2025 Consultas del primer y segundo parcial / recuperatorio. Presencial Becerra y
+Diego Sanz
+Martin
+15 26/11/2025 Recuperatorio. Presencial Becerra y
+Diego Sanz
+Martin
+Clase de finalización de cursada. Devolución de Recuperatorios. Cierre de Becerra,
+16 3/12/2025 Virtual por teams (Sincrónico)
+Notas. Jorge Ierache
+y Diego Sanz
+3
+3664 Inteligencia Artificial Universidad Nacional de La Matanza
+Cuestionarios
+Ingeniería de conocimiento y agentes:
+Cuestionarios Inicio Fecha límite de entrega
+INCO - Metodología IDEAL y sistemas expertos 20/08/2025 27/08/2025
+INCO - Tratamiento de Incertidumbre en sistemas expertos, Técnicas de educción y viabilidad. 27/08/2025 03/09/2025
+INCO - Knowledge representation & Reasoning 03/09/2025 10/09/2025
+INCO - Ejercicio práctico 10/09/2025 17/09/2025
+Agentes 17/09/2025 24/09/2025
+Aprendizaje de máquina:
+Cuestionarios Inicio Fecha límite de entrega
+ML - Ejercicio Práctico Regresión/Clasificación 08/10/2025 22/10/2025
+ML - Ejercicio Práctico MLP/CNN 22/10/2025 05/11/2025
+4
