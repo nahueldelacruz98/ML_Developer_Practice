@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 from langchain.docstore.document import Document
-from langchain.embeddings import SentenceTransformerEmbeddings
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import Chroma
 
 from langchain.agents import Tool

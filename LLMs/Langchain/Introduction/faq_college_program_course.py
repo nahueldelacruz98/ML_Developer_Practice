@@ -56,7 +56,9 @@ def tool_get_class_date(topic:str):
         k = 2
     )
 
-    return vector_search
+    formatted = "\n".join([f"{doc.page_content} (score: {score})" for doc, score in vector_search])
+
+    return formatted
 
 def tool_get_complementary_topics(main_topic:str):
     vec_store = load_embeddings()
@@ -66,7 +68,8 @@ def tool_get_complementary_topics(main_topic:str):
         k = 2
     )
 
-    return vec_search
+    formatted = "\n".join([f"{doc.page_content} (score: {score})" for doc, score in vec_search])
+    return formatted
 
 def create_agent():
     #first - choose LLM
@@ -97,7 +100,7 @@ def create_agent():
     )
 
     #All ready - Now, to use the agent, prepare your prompt. RECOMMENDED: Use a prompt template always to keep a structure.
-    template = "I would like to hear more about the important topics during the whole course and specially, focus on {topic} to keep in mind and be prepared for {exam}. You must always respond to the user in Spanish. When calling tools, use only their exact English names and the required format: Action: <tool_name> Action Input: <input>"
+    template = "I would like to hear more about the important topics during the whole course and specially, focus on {topic} to keep in mind and be prepared for {exam}. You must always respond to the user in Spanish. When calling tools, use only their exact English names and the required format: Action: <tool_name> Action Input: {{ ""param"": ""value"" }}"
     prompt = PromptTemplate(
         input_variables = ['topic', 'exam'],
         template = template
@@ -109,6 +112,6 @@ def create_agent():
 
 
 #read_pdf_data()
-create_embeddings()
+#create_embeddings()
 #load_embeddings()
-#create_agent()
+create_agent()
